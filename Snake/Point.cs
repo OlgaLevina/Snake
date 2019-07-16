@@ -35,5 +35,10 @@ namespace Snake
 
             }
         }
+
+        public void Clear()
+        {
+            simb=' ';Draw();
+        }
     }
 }

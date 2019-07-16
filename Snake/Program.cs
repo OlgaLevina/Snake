@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Snake
 {
@@ -18,6 +19,11 @@ namespace Snake
             hl1.Draw(); vl1.Draw(); hl2.Draw(); vl2.Draw();
             Snake snake = new Snake(p, 4, Direction.Right);
             snake.Draw();
+            for (int i = 0; i < 15; i++)
+            {
+                Thread.Sleep(300); snake.Move();
+            }
+            
             Console.ReadLine();
         }
     }
