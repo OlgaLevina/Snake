@@ -19,12 +19,15 @@ namespace Snake
             hl1.Draw(); vl1.Draw(); hl2.Draw(); vl2.Draw();
             Snake snake = new Snake(p, 4, Direction.Right);
             snake.Draw();
-            for (int i = 0; i < 15; i++)
+            while (true)
             {
-                Thread.Sleep(300); snake.Move();
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    snake.HandleKey(key.Key);
+                }
+                Thread.Sleep(100); snake.Move();
             }
-            
-            Console.ReadLine();
         }
     }
 }
