@@ -11,6 +11,10 @@ namespace Snake
         public int x;
         public int y;
         public char simb;
+        public Point(int X, int Y, char Simb)
+        {
+            x = X; y = Y; simb = Simb;
+        }
         public void Draw()
         {
             Console.SetCursorPosition(x, y);
