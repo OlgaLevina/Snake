@@ -9,7 +9,7 @@ namespace Snake
     class Figure
     {
         protected List<Point> pline;
-        public void Draw()
+        public virtual void Draw()
         {
             foreach (Point p in pline)
             {
