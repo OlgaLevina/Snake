@@ -11,16 +11,19 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            Point p = new Point(4,5,'*');
-            List < Figure > figures= new List<Figure>() { new HorizontalLine(0, 78, 0, '+'),
-            new HorizontalLine(0, 78, 24, '+'),
-            new VerticalLine(0, 24, 0, '+'),
-            new VerticalLine(0, 24, 78, '+')
-            };
-            foreach (Figure f in figures)
-            {
-                f.Draw();
-            }
+            Console.SetBufferSize(80,25);
+            Walls walls = new Walls(80, 25);
+            walls.Draw();
+            Point p = new Point(4, 5, '*');
+            //List < Figure > figures= new List<Figure>() { new HorizontalLine(0, 78, 0, '+'),
+            //new HorizontalLine(0, 78, 24, '+'),
+            //new VerticalLine(0, 24, 0, '+'),
+            //new VerticalLine(0, 24, 78, '+')
+            //};
+            //foreach (Figure f in figures)
+            //{
+            //    f.Draw();
+            //}
             //HorizontalLine hl1 = new HorizontalLine(0, 78, 0, '+');
             //HorizontalLine hl2 = new HorizontalLine(0, 78, 24, '+');
             //VerticalLine vl1 = new VerticalLine(0, 24, 0, '+');
@@ -33,6 +36,7 @@ namespace Snake
             food.Draw();
             while (true)
             {
+                if (walls.IsHit(snake) || snake.IsHitTail()) break;
                 if (snake.Eat(food))
                 { food = foodCreator.CreateFood(); food.Draw(); }
                 else snake.Move();

@@ -64,5 +64,14 @@ namespace Snake
             }
 
         }
+        public bool IsHitTail()
+        {
+            Point head = pline.Last();
+            for (int i = 0; i < pline.Count-1; i++)
+            {
+                if (head.IsHit(pline[i])) return true;
+            }
+            return false;
+        }
     }
 }
