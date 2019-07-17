@@ -19,8 +19,15 @@ namespace Snake
             hl1.Draw(); vl1.Draw(); hl2.Draw(); vl2.Draw();
             Snake snake = new Snake(p, 4, Direction.Right);
             snake.Draw();
+            FoodCreator foodCreator = new FoodCreator(80, 25, '$');
+            Point food = foodCreator.CreateFood();
+            food.Draw();
             while (true)
             {
+                if (snake.Eat(food))
+                { food = foodCreator.CreateFood(); food.Draw(); }
+                else snake.Move();
+                Thread.Sleep(100);
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
